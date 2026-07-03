@@ -1,26 +1,31 @@
 function Hero() {
   return (
-    <section className="min-h-[90vh] flex items-center justify-center bg-slate-950 text-white px-6">
-      <div className="max-w-4xl text-center">
-        <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+    <section className="min-h-[90vh] bg-slate-950 text-white flex items-center justify-center px-6">
+      <div className="max-w-6xl mx-auto text-center">
+        <span className="inline-block px-4 py-2 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+          🚀 AI Powered Software Engineering Platform
+        </span>
+
+        <h1 className="mt-8 text-6xl md:text-7xl font-extrabold leading-tight">
           Build the
-          <span className="text-cyan-400"> Right Project</span>,
+          <span className="text-cyan-400"> Right Project</span>
           <br />
           Not Just Another Project.
         </h1>
 
-        <p className="mt-6 text-lg text-slate-300 max-w-2xl mx-auto">
-          ProjectForge uses AI to recommend personalized software projects
-          based on your skills, interests, experience, and career goals.
+        <p className="mt-8 text-xl text-slate-400 max-w-3xl mx-auto leading-8">
+          ProjectForge analyzes your skills, interests, experience, and career
+          goals to generate personalized software projects complete with
+          architecture, roadmap, APIs, database design, and development plan.
         </p>
 
-        <div className="mt-10 flex justify-center gap-4">
-          <button className="bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-lg font-semibold transition">
+        <div className="mt-10 flex justify-center gap-5 flex-wrap">
+          <button className="px-8 py-4 rounded-xl bg-cyan-500 hover:bg-cyan-600 transition font-semibold">
             Get Started
           </button>
 
-          <button className="border border-slate-600 hover:border-cyan-400 px-6 py-3 rounded-lg transition">
-            Learn More
+          <button className="px-8 py-4 rounded-xl border border-slate-700 hover:border-cyan-400 transition">
+            Explore Features
           </button>
         </div>
       </div>

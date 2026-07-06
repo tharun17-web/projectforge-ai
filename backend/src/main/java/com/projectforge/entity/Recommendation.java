@@ -18,27 +18,21 @@ public class Recommendation {
 
     private String projectTitle;
 
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String roadmap;
 
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String techStack;
 
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String learningTopics;
 
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String apiList;
 
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String databaseDesign;
 

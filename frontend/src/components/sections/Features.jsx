@@ -1,54 +1,89 @@
+import { motion } from "framer-motion";
+import {
+  Sparkles,
+  FileStack,
+  BrainCircuit,
+  FileText,
+  MessageSquareCode,
+  Gauge,
+} from "lucide-react";
+import SectionHeading from "../ui/SectionHeading";
+
 const features = [
   {
+    icon: Sparkles,
     title: "AI Project Recommendations",
     description:
-      "Get personalized software project ideas based on your skills, interests, and career goals.",
-    icon: "🤖",
+      "Personalized software project ideas based on your skills, interests, and career goals.",
   },
   {
-    title: "Complete Project Blueprint",
+    icon: FileStack,
+    title: "Complete Engineering Blueprint",
     description:
-      "Generate architecture, APIs, database schema, timelines, and folder structures instantly.",
-    icon: "📋",
+      "Architecture, tech stack, APIs, database schema, and a week-by-week roadmap — generated instantly.",
   },
   {
+    icon: BrainCircuit,
     title: "AI Mentor",
     description:
-      "Ask technical questions, improve your architecture, and get coding guidance anytime.",
-    icon: "🧠",
+      "Contextual tips derived from your profile and current recommendation, right on your dashboard.",
+  },
+  {
+    icon: FileText,
+    title: "Resume Assistant",
+    description:
+      "Turn your generated project into polished, copy-ready resume bullet points in one click.",
+  },
+  {
+    icon: MessageSquareCode,
+    title: "Interview Preparation",
+    description:
+      "Guidance and likely interview questions generated from your project's own tech stack.",
+  },
+  {
+    icon: Gauge,
+    title: "Build Estimate",
+    description:
+      "A frontend-calculated estimate of difficulty and duration, so you can plan your available time.",
   },
 ];
 
 function Features() {
   return (
-    <section className="bg-slate-950 py-24 px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl font-bold text-center text-white">
-          Everything You Need
-        </h2>
+    <section id="features" className="bg-slate-900/40 py-24 px-6 border-y border-slate-800">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeading
+          eyebrow="Feature Highlights"
+          icon={Sparkles}
+          title="Everything you need to go from idea to interview"
+          description="ProjectForge helps you go from a blank page to a portfolio-ready project — with AI assistance at every step."
+        />
 
-        <p className="text-center text-slate-400 mt-4 max-w-2xl mx-auto">
-          ProjectForge helps developers go from an idea to a production-ready
-          project with AI assistance.
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-cyan-500 transition-all duration-300"
-            >
-              <div className="text-5xl">{feature.icon}</div>
-
-              <h3 className="text-2xl font-semibold text-white mt-6">
-                {feature.title}
-              </h3>
-
-              <p className="text-slate-400 mt-4 leading-7">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+          {features.map((feature, i) => {
+            const Icon = feature.icon;
+            return (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
+                whileHover={{ y: -6 }}
+                className="surface-card rounded-2xl p-8 hover:border-indigo-500/50 transition-colors duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                  <Icon size={22} />
+                </div>
+                <h3 className="mt-6 text-lg font-semibold text-white">
+                  {feature.title}
+                </h3>
+                <p className="mt-3 text-slate-400 leading-relaxed text-sm">
+                  {feature.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

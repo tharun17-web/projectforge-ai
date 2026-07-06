@@ -1,1 +1,117 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: theme(--color-slate-950);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  border-color: theme(--color-slate-800);
+}
+
+::selection {
+  background-color: theme(--color-indigo-500 / 35%);
+  color: white;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: theme(--color-slate-700);
+  border-radius: 999px;
+  border: 2px solid theme(--color-slate-950);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: theme(--color-slate-600);
+}
+
+:focus-visible {
+  outline: 2px solid theme(--color-indigo-500);
+  outline-offset: 2px;
+}
+
+/* Reusable surface + effects */
+.surface-card {
+  background-color: color-mix(in oklab, theme(--color-slate-900) 92%, white 2%);
+  border: 1px solid theme(--color-slate-800);
+}
+
+.surface-graphite {
+  background-color: theme(--color-slate-900 / 70%);
+  border: 1px solid theme(--color-slate-800);
+  backdrop-filter: blur(12px);
+}
+
+.glow-indigo {
+  box-shadow: 0 0 0 1px theme(--color-indigo-500 / 20%), 0 20px 60px -20px theme(--color-indigo-500 / 35%);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 0 1px theme(--color-cyan-500 / 20%), 0 20px 60px -20px theme(--color-cyan-500 / 35%);
+}
+
+.text-gradient {
+  background-image: linear-gradient(90deg, theme(--color-indigo-400), theme(--color-cyan-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-mesh {
+  background-image:
+    radial-gradient(60% 50% at 20% 0%, theme(--color-indigo-500 / 18%) 0%, transparent 60%),
+    radial-gradient(50% 40% at 90% 10%, theme(--color-cyan-500 / 14%) 0%, transparent 60%),
+    radial-gradient(60% 60% at 50% 100%, theme(--color-indigo-500 / 8%) 0%, transparent 60%);
+}
+
+.bg-grid {
+  background-image: linear-gradient(theme(--color-slate-800 / 60%) 1px, transparent 1px),
+    linear-gradient(90deg, theme(--color-slate-800 / 60%) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

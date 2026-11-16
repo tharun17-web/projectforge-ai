@@ -17,7 +17,7 @@ public class GeminiServiceImpl implements GeminiService {
     public String generateProject(String prompt) {
 
         Map<String, Object> body = Map.of(
-                "model", "llama-3.1-8b-instant",
+                "model", "openai/gpt-oss-20b",
                 "messages", new Object[]{
                         Map.of(
                                 "role", "system",

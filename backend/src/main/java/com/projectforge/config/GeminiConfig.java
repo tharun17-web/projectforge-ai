@@ -1,3 +1,4 @@
+
 package com.projectforge.config;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -16,10 +17,26 @@ public class GeminiConfig {
     @Bean
     public WebClient geminiWebClient() {
 
+        String cleanApiKey = apiKey == null
+                ? ""
+                : apiKey.replaceAll("[\\r\\n]", "").trim();
+
+        if (cleanApiKey.isEmpty()) {
+            throw new IllegalStateException(
+                    "GROQ_API_KEY is missing or empty"
+            );
+        }
+
         return WebClient.builder()
                 .baseUrl("https://api.groq.com/openai/v1")
-                .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + apiKey)
-                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .defaultHeader(
+                        HttpHeaders.AUTHORIZATION,
+                        "Bearer " + cleanApiKey
+                )
+                .defaultHeader(
+                        HttpHeaders.CONTENT_TYPE,
+                        MediaType.APPLICATION_JSON_VALUE
+                )
                 .build();
     }
 }
